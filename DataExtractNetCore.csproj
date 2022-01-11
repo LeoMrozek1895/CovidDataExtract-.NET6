@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<Copyright>Leo Mrozek</Copyright>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Authors>Leo Mrozek</Authors>
+		<Company>Leo Mrozek</Company>
+		<Product>Covid-19 Data Extractor</Product>
+		<Description>Downloads and loads to a SQL Database, Covid-19 data from Data.World. This contains down to the county level (country, state/region, county) of deaths and cases of Covid-19 going back to 1/1/20</Description>
+		<PackageIcon>covid19.png</PackageIcon>
+		<AssemblyName>DataExtractNetCore5</AssemblyName>
+		<RootNamespace>DataExtract</RootNamespace>
+		<ApplicationIcon>covid19.ico</ApplicationIcon>
+		<SignAssembly>false</SignAssembly>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://dev.azure.com/ljmrozek/ASP.NET%205%20Projects/_git/DataExtract-NetCore5</RepositoryUrl>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Classes\CovidData.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="appsettings.dev.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="appsettings.local.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="appsettings.prod.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="covid19.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+</Project>

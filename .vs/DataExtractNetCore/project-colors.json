@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7c20bca2-8de6-45fd-9180-6f975dc6e287": {
+      "ProjectGuid": "7c20bca2-8de6-45fd-9180-6f975dc6e287",
+      "DisplayName": "DataExtractNetCore",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

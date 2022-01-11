@@ -1,0 +1,26 @@
+{
+  "profiles": {
+    "CovidExtractLocal": {
+      "commandName": "Project",
+      "commandLineArgs": "--wait  --force ",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "LOCAL"
+      },
+      "sqlDebugging": false
+    },
+    "CovidExtractDev": {
+      "commandName": "Project",
+      "commandLineArgs": "--wait --force",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "DEV"
+      }
+    },
+    "CovidExtractProd": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "PROD"
+      },
+      "sqlDebugging": true
+    }
+  }
+}

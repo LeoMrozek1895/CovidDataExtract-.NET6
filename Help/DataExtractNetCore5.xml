@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>DataExtractNetCore5</name>
+  </assembly>
+  <members>
+    <member name="N:DataExtract.Classes">
+      <summary>
+   The Classes namespace.
+   </summary>
+    </member>
+    <member name="T:DataExtract.Classes.CommandLineOptions">
+      <summary>
+   Commandline options for the applications using the CommandLine Parser from Nuget
+   </summary>
+    </member>
+    <member name="P:DataExtract.Classes.CommandLineOptions.WaitForExit">
+      <summary>
+   Gets or sets a value indicating whether [wait for exit].
+   </summary>
+      <value>
+        <c>true</c> if [wait for exit]; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:DataExtract.Classes.CommandLineOptions.ForceReload">
+      <summary>
+   Gets or sets a value indicating whether [force reload].
+   </summary>
+      <value>
+        <c>true</c> if [force reload]; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="T:DataExtract.Classes.Dal">
+      <summary>
+   Class Dal.
+   Implements the <see cref="T:DataExtract.Interfaces.IDal" /></summary>
+      <seealso cref="T:DataExtract.Interfaces.IDal" />
+    </member>
+    <member name="T:DataExtract.Classes.Dal.DataTables">
+      <summary>
+   Enum DataTables
+   </summary>
+    </member>
+    <member name="M:DataExtract.Classes.Dal.#ctor(IConfiguration,ILogger{ConsoleApplication},IDalService)">
+      <summary>
+   Initializes a new instance of the <see cref="T:DataExtract.Classes.Dal" /> class.
+   </summary>
+      <param name="config">The configuration.</param>
+      <param name="logger">The logger.</param>
+      <param name="dal">The dal.</param>
+    </member>
+    <member name="M:DataExtract.Classes.Dal.GetRowData">
+      <summary>
+   Gets the row data.
+   </summary>
+      <returns>DataSet.</returns>
+      <exception cref="DataException">
+      </exception>
+    </member>
+    <member name="M:DataExtract.Classes.Dal.TruncateData(DataTables)">
+      <summary>
+   Truncates the data.
+   </summary>
+      <param name="dtEnum">The dt enum.</param>
+      <returns>
+        <c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+      <exception cref="DataException">
+      </exception>
+    </member>
+    <member name="M:DataExtract.Classes.Dal.BulkLoadData(DataTable)">
+      <summary>
+   Bulks the load data.
+   </summary>
+      <param name="dt">The dt.</param>
+      <exception cref="DataException">
+      </exception>
+    </member>
+    <member name="M:DataExtract.Classes.Dal.LoadCovidData">
+      <summary>
+   Loads the covid data.
+   </summary>
+      <returns>DataSet.</returns>
+      <exception cref="DataException">
+      </exception>
+    </member>
+    <member name="M:DataExtract.Classes.Dal.GetDataTableFromCsvFile(System.String)">
+      <summary>
+   Gets the data table from CSV file.
+   </summary>
+      <param name="csvFilePath">The CSV file path.</param>
+      <returns>DataTable.</returns>
+      <exception cref="DataException">
+      </exception>
+    </member>
+    <member name="T:DataExtract.Classes.DalService">
+      <summary>
+   Class DalService.
+   Implements the <see cref="T:DataExtract.Interfaces.IDalService" /></summary>
+      <seealso cref="T:DataExtract.Interfaces.IDalService" />
+    </member>
+    <member name="T:DataExtract.Classes.DalParameters">
+      <summary>
+   Class DalParameters.
+   </summary>
+    </member>
+    <member name="T:DataExtract.Classes.DalParamsCollection">
+      <summary>
+   Class DalParamsCollection.
+   Implements the <see cref="T:System.Collections.CollectionBase" />
+   Implements the <see cref="T:System.Collections.Generic.IEnumerable`1" /></summary>
+      <seealso cref="T:System.Collections.CollectionBase" />
+      <seealso cref="T:System.Collections.Generic.IEnumerable`1" />
+    </member>
+    <member name="M:DataExtract.Classes.DalService.#ctor(ILogger{ConsoleApplication})">
+      <summary>
+   Initializes a new instance of the <see cref="T:DataExtract.Classes.DalService" /> class.
+   </summary>
+      <param name="logger">The logger.</param>
+    </member>
+    <member name="M:DataExtract.Classes.DalService.LoadCommandParameters(SqlConnection,System.String,DalParamsCollection,CommandType,System.Int32)">
+      <summary>
+   Loads the command parameters.
+   </summary>
+      <param name="cn">The cn.</param>
+      <param name="strSql">The string SQL.</param>
+      <param name="parms">The parms.</param>
+      <param name="commandType">Type of the command.</param>
+      <param name="commandTimeout">The command timeout.</param>
+      <returns>SqlCommand.</returns>
+      <exception cref="DataException">Data Exception in LoadCommandParameters</exception>
+    </member>
+    <member name="M:DataExtract.Classes.DalService.ExecuteDataReader(System.String,System.String,DalParamsCollection@,CommandType)">
+      <summary>
+   Executes the data reader.
+   </summary>
+      <param name="connString">The connection string.</param>
+      <param name="strSql">The string SQL.</param>
+      <param name="parms">The parms.</param>
+      <param name="commandType">Type of the command.</param>
+      <returns>SqlDataReader.</returns>
+      <exception cref="T:System.Exception">Could not open connection to database</exception>
+      <exception cref="DataException">Data Exception in ExecuteDataReader</exception>
+    </member>
+    <member name="M:DataExtract.Classes.DalService.ExecuteNonQuery(System.String,System.String,DalParamsCollection@,CommandType)">
+      <summary>
+   Executes the non query.
+   </summary>
+      <param name="connString">The connection string.</param>
+      <param name="strSql">The string SQL.</param>
+      <param name="parms">The parms.</param>
+      <param name="commandType">Type of the command.</param>
+      <returns>
+        <c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+      <exception cref="DataException">Could not open connection to database. Connection: {connString}</exception>
+      <exception cref="DataException">Data Exception in ExecuteNonQuery</exception>
+      <exception cref="DataException">Could not open connection to database. Connection: {connString}</exception>
+    </member>
+    <member name="M:DataExtract.Classes.DalService.ExecuteScalar(System.String,System.String,DalParamsCollection@,CommandType)">
+      <summary>
+   Executes the scalar.
+   </summary>
+      <param name="connString">The connection string.</param>
+      <param name="strSql">The string SQL.</param>
+      <param name="parms">The parms.</param>
+      <param name="commandType">Type of the command.</param>
+      <returns>System.Object.</returns>
+      <exception cref="T:System.Exception">Could not open connection to database</exception>
+      <exception cref="DataException">Data Exception in ExecuteScalar</exception>
+    </member>
+    <member name="M:DataExtract.Classes.DalService.GetDataSet(System.String,System.String,DalParamsCollection@,CommandType)">
+      <summary>
+   Gets the data set.
+   </summary>
+      <param name="connString">The connection string.</param>
+      <param name="strSql">The string SQL.</param>
+      <param name="parms">The parms.</param>
+      <param name="commandType">Type of the command.</param>
+      <returns>DataSet.</returns>
+      <exception cref="T:System.Exception">Could not open connection to database</exception>
+      <exception cref="DataException">Data Exception in GetDataSet</exception>
+    </member>
+    <member name="M:DataExtract.Classes.DalParameters.#ctor(System.String,SqlDbType,System.Nullable{System.Int32},System.Object)">
+      <summary>
+   Initializes a new instance of the <see cref="T:DataExtract.Classes.DalParameters" /> class.
+   </summary>
+      <param name="parmName">Name of the parm.</param>
+      <param name="dbType">Type of the database.</param>
+      <param name="length">The length.</param>
+      <param name="value">The value.</param>
+    </member>
+    <member name="P:DataExtract.Classes.DalParameters.Length">
+      <summary>
+   Gets or sets the length.
+   </summary>
+      <value>The length.</value>
+    </member>
+    <member name="P:DataExtract.Classes.DalParameters.ParmName">
+      <summary>
+   Gets or sets the name of the parm.
+   </summary>
+      <value>The name of the parm.</value>
+    </member>
+    <member name="P:DataExtract.Classes.DalParameters.SqlDbType">
+      <summary>
+   Gets or sets the type of the SQL database.
+   </summary>
+      <value>The type of the SQL database.</value>
+    </member>
+    <member name="P:DataExtract.Classes.DalParameters.Value">
+      <summary>
+   Gets or sets the value.
+   </summary>
+      <value>The value.</value>
+    </member>
+    <member name="M:DataExtract.Classes.DalParamsCollection.#ctor(List{DalParameters})">
+      <summary>
+   Initializes a new instance of the <see cref="T:DataExtract.Classes.DalParamsCollection" /> class.
+   </summary>
+      <param name="parmsList">The parms list.</param>
+    </member>
+    <member name="M:DataExtract.Classes.DalParamsCollection.Add(DalParameters)">
+      <summary>
+   Adds the specified parm.
+   </summary>
+      <param name="parm">The parm.</param>
+    </member>
+    <member name="M:DataExtract.Classes.DalParamsCollection.GetEnumerator">
+      <summary>
+   Returns an enumerator that iterates through the collection.
+   </summary>
+      <returns>An enumerator that can be used to iterate through the collection.</returns>
+    </member>
+    <member name="T:DataExtract.Classes.AppSettings">
+      <summary>
+   Class AppSettings.
+   </summary>
+    </member>
+    <member name="T:DataExtract.Classes.ConnectionStrings">
+      <summary>
+   The Classes namespace.
+   </summary>
+    </member>
+    <member name="T:DataExtract.Classes.LoggingInfo">
+      <summary>
+   The Classes namespace.
+   </summary>
+    </member>
+    <member name="M:DataExtract.Classes.AppSettings.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:DataExtract.Classes.AppSettings" /> class.
+   </summary>
+    </member>
+    <member name="P:DataExtract.Classes.AppSettings.Environment">
+      <summary>
+   Gets or sets the environment.
+   </summary>
+      <value>The environment.</value>
+    </member>
+    <member name="P:DataExtract.Classes.AppSettings.Title">
+      <summary>
+   Gets or sets the title.
+   </summary>
+      <value>The title.</value>
+    </member>
+    <member name="P:DataExtract.Classes.AppSettings.Version">
+      <summary>
+   Gets or sets the version.
+   </summary>
+      <value>The version.</value>
+    </member>
+    <member name="M:DataExtract.Classes.AppSettings.#ctor(IConfiguration)">
+      <summary>
+   Initializes a new instance of the <see cref="T:DataExtract.Classes.AppSettings" /> class.
+   </summary>
+      <param name="config">The configuration.</param>
+    </member>
+    <member name="M:DataExtract.Classes.ConnectionStrings.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:DataExtract.Classes.ConnectionStrings" /> class.
+   </summary>
+    </member>
+    <member name="P:DataExtract.Classes.ConnectionStrings.DbConnectionString">
+      <summary>
+   Gets or sets the connection string value.
+   </summary>
+      <value>The connection string.</value>
+    </member>
+    <member name="M:DataExtract.Classes.ConnectionStrings.#ctor(IConfiguration)">
+      <summary>
+   Initializes a new instance of the <see cref="T:DataExtract.Classes.ConnectionStrings" /> class.
+   </summary>
+      <param name="config">The configuration.</param>
+    </member>
+    <member name="M:DataExtract.Classes.LoggingInfo.#ctor(IConfiguration)">
+      <summary>
+   Initializes a new instance of the <see cref="T:DataExtract.Classes.LoggingInfo" /> class.
+   Uses the Configuration to get the section of AppSettings and loads the logging values.
+   </summary>
+      <param name="config">The configuration.</param>
+    </member>
+    <member name="P:DataExtract.Classes.LoggingInfo.MinLogLevel">
+      <summary>
+   Returns and stores as a string the minimum logging value for the application
+   </summary>
+      <value>The minimum log level.</value>
+    </member>
+    <member name="M:DataExtract.Classes.LoggingInfo.GetMinLogLevel">
+      <summary>
+   Converts the minimum logging string value to a value in LogLevel
+   </summary>
+      <returns>LogLevel.</returns>
+    </member>
+    <member name="T:DataExtract.Interfaces.IDal">
+      <summary>
+   Interface IDal
+   </summary>
+    </member>
+    <member name="M:DataExtract.Interfaces.IDal.GetRowData">
+      <summary>
+   Gets the row data.
+   </summary>
+      <returns>DataSet.</returns>
+    </member>
+    <member name="M:DataExtract.Interfaces.IDal.TruncateData(Dal.DataTables)">
+      <summary>
+   Truncates the data.
+   </summary>
+      <param name="dtEnum">The dt enum.</param>
+      <returns>
+        <c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    </member>
+    <member name="M:DataExtract.Interfaces.IDal.BulkLoadData(DataTable)">
+      <summary>
+   Bulks the load data.
+   </summary>
+      <param name="dt">The dt.</param>
+    </member>
+    <member name="M:DataExtract.Interfaces.IDal.LoadCovidData">
+      <summary>
+   Loads the covid data.
+   </summary>
+      <returns>DataSet.</returns>
+    </member>
+    <member name="M:DataExtract.Interfaces.IDal.GetDataTableFromCsvFile(System.String)">
+      <summary>
+   Gets the data table from CSV file.
+   </summary>
+      <param name="csvFilePath">The CSV file path.</param>
+      <returns>DataTable.</returns>
+    </member>
+    <member name="T:DataExtract.Interfaces.IDalService">
+      <summary>
+   Interface IDalService
+   </summary>
+    </member>
+    <member name="M:DataExtract.Interfaces.IDalService.LoadCommandParameters(SqlConnection,System.String,DalParamsCollection,CommandType,System.Int32)">
+      <summary>
+   Loads the command parameters.
+   </summary>
+      <param name="cn">The cn.</param>
+      <param name="strSql">The string SQL.</param>
+      <param name="parms">The parms.</param>
+      <param name="commandType">Type of the command.</param>
+      <param name="commandTimeout">The command timeout.</param>
+      <returns>SqlCommand.</returns>
+    </member>
+    <member name="M:DataExtract.Interfaces.IDalService.ExecuteDataReader(System.String,System.String,DalParamsCollection@,CommandType)">
+      <summary>
+   Executes the data reader.
+   </summary>
+      <param name="connString">The connection string.</param>
+      <param name="strSql">The string SQL.</param>
+      <param name="parms">The parms.</param>
+      <param name="commandType">Type of the command.</param>
+      <returns>SqlDataReader.</returns>
+    </member>
+    <member name="M:DataExtract.Interfaces.IDalService.ExecuteNonQuery(System.String,System.String,DalParamsCollection@,CommandType)">
+      <summary>
+   Executes the non query.
+   </summary>
+      <param name="connString">The connection string.</param>
+      <param name="strSql">The string SQL.</param>
+      <param name="parms">The parms.</param>
+      <param name="commandType">Type of the command.</param>
+      <returns>
+        <c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    </member>
+    <member name="M:DataExtract.Interfaces.IDalService.ExecuteScalar(System.String,System.String,DalParamsCollection@,CommandType)">
+      <summary>
+   Executes the scalar.
+   </summary>
+      <param name="connString">The connection string.</param>
+      <param name="strSql">The string SQL.</param>
+      <param name="parms">The parms.</param>
+      <param name="commandType">Type of the command.</param>
+      <returns>System.Object.</returns>
+    </member>
+    <member name="M:DataExtract.Interfaces.IDalService.GetDataSet(System.String,System.String,DalParamsCollection@,CommandType)">
+      <summary>
+   Gets the data set.
+   </summary>
+      <param name="connString">The connection string.</param>
+      <param name="strSql">The string SQL.</param>
+      <param name="parms">The parms.</param>
+      <param name="commandType">Type of the command.</param>
+      <returns>DataSet.</returns>
+    </member>
+    <member name="T:DataExtract.ConsoleApplication">
+      <summary>
+   Class ConsoleApplication.
+   </summary>
+    </member>
+    <member name="M:DataExtract.ConsoleApplication.#ctor(ILogger{ConsoleApplication},IDal)">
+      <summary>
+   Initializes class with needed injected classes
+   </summary>
+      <param name="logger">The logger.</param>
+      <param name="dal">The dal.</param>
+    </member>
+    <member name="M:DataExtract.ConsoleApplication.Run(CommandLineOptions)">
+      <summary>
+   Entry point of the application that download, extracts from CSV and saves to database.
+   </summary>
+      <param name="opts">CommandLineParameters passed from main</param>
+    </member>
+  </members>
+</doc>
